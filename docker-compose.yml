@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  calendarrest:
+    container_name: 'calendar'
+    image: node:18
+    restart: always
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src/:/app/
+      - ./package.json:/app/package.json
+    command: bash -c "npm install --omit=dev && npm run start" 
